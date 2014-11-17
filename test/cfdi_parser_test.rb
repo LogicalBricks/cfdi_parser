@@ -8,18 +8,18 @@ class CfdiParserTest < MiniTest::Test
   end
 
   def test_object_not_nil
-    assert_equal @cfdi_parser.nil?, false
+    refute_nil @cfdi_parser
   end
 
   def test_get_version
-    assert_equal @cfdi_parser.version, "3.2"
+    assert_equal "3.2", @cfdi_parser.version
   end
 
   def test_get_total
-    assert_equal @cfdi_parser.total, "116.00"
+    assert_equal "116.00", @cfdi_parser.total
   end
 
   def test_get_subtotal
-    assert_equal @cfdi_parser.subtotal, "100.00"
+    assert_equal "100.00", @cfdi_parser.subtotal
   end
 end
