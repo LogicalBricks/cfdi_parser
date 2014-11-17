@@ -7,34 +7,30 @@ module CfdiParser
 
     def initialize(cfdi)
       @doc = Nokogiri::XML(cfdi)
-      @namespaces = generate_namespaces
     end
 
     def version
-      doc.xpath("//cfdi:Comprobante",namespaces).attribute('version').value rescue nil
+      doc.xpath("//cfdi:Comprobante", namespaces).attribute('version').value rescue nil
     end
 
     def total
-      doc.xpath("//cfdi:Comprobante",namespaces).attribute('total').value rescue nil
+      doc.xpath("//cfdi:Comprobante", namespaces).attribute('total').value rescue nil
     end
 
     def subtotal
-      doc.xpath("//cfdi:Comprobante",namespaces).attribute('subTotal').value rescue nil
+      doc.xpath("//cfdi:Comprobante", namespaces).attribute('subTotal').value rescue nil
     end
 
     private
 
     def namespaces
-      @namespaces
+      @namespaces ||= generate_namespaces
     end
 
     def generate_namespaces
-      namespaces = doc.collect_namespaces
-      namespaces_names = {}
-      namespaces.each_pair do |key, value|
-        namespaces_names[key.sub(/^xmlns:/, '')] = value
+      doc.collect_namespaces.each_pair.with_object({}) do |(k, v), h|
+        h[k.sub(/^xmlns:/, '')] = v
       end
-      namespaces_names
     end
   end
 end
