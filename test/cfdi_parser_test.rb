@@ -7,12 +7,16 @@ class CfdiParserTest < MiniTest::Test
     @cfdi_parser = CfdiParser::CfdiParser.new(file)
   end
 
-  def test_object_not_nil
-    refute_nil @cfdi_parser
-  end
-
   def test_get_version
     assert_equal "3.2", @cfdi_parser.version
+  end
+
+  def test_get_serie
+    assert_equal "A", @cfdi_parser.serie
+  end
+
+  def test_get_folio
+    assert_equal "1", @cfdi_parser.folio
   end
 
   def test_get_total

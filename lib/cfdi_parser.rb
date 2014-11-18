@@ -17,6 +17,14 @@ module CfdiParser
       attribute("//cfdi:Comprobante", 'total').value rescue nil
     end
 
+    def serie
+      attribute("//cfdi:Comprobante", 'serie').value rescue nil
+    end
+
+    def folio
+      attribute("//cfdi:Comprobante", 'folio').value rescue nil
+    end
+
     def subtotal
       attribute("//cfdi:Comprobante", 'subTotal').value rescue nil
     end
