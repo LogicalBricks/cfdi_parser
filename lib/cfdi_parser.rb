@@ -10,18 +10,69 @@ module CfdiParser
     end
 
     def version
-      doc.xpath("//cfdi:Comprobante", namespaces).attribute('version').value rescue nil
+      attribute("//cfdi:Comprobante", 'version').value rescue nil
     end
 
     def total
-      doc.xpath("//cfdi:Comprobante", namespaces).attribute('total').value rescue nil
+      attribute("//cfdi:Comprobante", 'total').value rescue nil
     end
 
     def subtotal
-      doc.xpath("//cfdi:Comprobante", namespaces).attribute('subTotal').value rescue nil
+      attribute("//cfdi:Comprobante", 'subTotal').value rescue nil
     end
 
-    private
+    def nombre_emisor
+      attribute("//cfdi:Emisor", 'nombre').value rescue nil
+    end
+
+    def rfc_emisor
+      attribute("//cfdi:Emisor", 'rfc').value rescue nil
+    end
+
+    def nombre_receptor
+      attribute("//cfdi:Receptor", 'nombre').value rescue nil
+    end
+
+    def rfc_receptor
+      attribute("//cfdi:Receptor", 'rfc').value rescue nil
+    end
+
+    def total_impuestos_retenidos
+      attribute("//cfdi:Impuestos", 'totalImpuestosRetenidos').value rescue nil
+    end
+
+    def total_impuestos_trasladados
+      attribute("//cfdi:Impuestos", 'totalImpuestosTrasladados').value rescue nil
+    end
+
+    def impuestos_retenidos
+      xpath('//cfdi:Retencion').map do |node|
+        {
+          impuesto: node.attributes.first.last.value,
+          importe: node.attributes['importe'].value
+        }
+      end
+    end
+
+    def impuestos_trasladados
+      xpath('//cfdi:Traslado').map do |node|
+        {
+          impuesto: node.attributes['impuesto'].value,
+          tasa: node.attributes['tasa'].value,
+          importe: node.attributes['importe'].value
+        }
+      end
+    end
+
+    private # ======================== PRIVATE ========================== #
+
+    def attribute(path, attr)
+      xpath(path).attribute(attr)
+    end
+
+    def xpath(path)
+      doc.xpath(path, namespaces)
+    end
 
     def namespaces
       @namespaces ||= generate_namespaces
