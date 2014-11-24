@@ -65,4 +65,13 @@ class CfdiParserTest < MiniTest::Test
     ]
     assert_equal impuestos_trasladados, @cfdi_parser.impuestos_trasladados
   end
+
+  def test_get_fecha_trimbrado
+    assert_equal Date.new(2012, 10, 24), @cfdi_parser.fecha_timbrado
+  end
+
+  def test_get_descripcion
+    descripcion = 'Venta de equipo de computo Asesoría'
+    assert_equal descripcion, @cfdi_parser.descripcion
+  end
 end

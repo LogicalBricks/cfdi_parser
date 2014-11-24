@@ -1,5 +1,6 @@
 require "cfdi_parser/version"
 require 'nokogiri'
+require 'date'
 
 module CfdiParser
   class CfdiParser
@@ -70,6 +71,14 @@ module CfdiParser
           importe: node.attributes['importe'].value
         }
       end
+    end
+
+    def fecha_timbrado
+      Date.strptime(attribute("//tfd:TimbreFiscalDigital", 'FechaTimbrado').value, '%Y-%m-%d') rescue nil
+    end
+
+    def descripcion
+      xpath('//cfdi:Concepto').map { |node| node[:descripcion] }.join(' ')
     end
 
     private # ======================== PRIVATE ========================== #
