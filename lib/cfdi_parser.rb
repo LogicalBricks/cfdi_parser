@@ -81,6 +81,10 @@ module CfdiParser
       xpath('//cfdi:Concepto').map { |node| node[:descripcion] }.join(' ')
     end
 
+    def metodo_pago
+      attribute("//cfdi:Comprobante", 'metodoDePago').value rescue nil
+    end
+
     private # ======================== PRIVATE ========================== #
 
     def attribute(path, attr)

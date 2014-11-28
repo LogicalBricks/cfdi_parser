@@ -74,4 +74,8 @@ class CfdiParserTest < MiniTest::Test
     descripcion = 'Venta de equipo de computo Asesoría'
     assert_equal descripcion, @cfdi_parser.descripcion
   end
+
+  def test_get_metodo_pago
+    assert_equal "Transferencia Electrónica", @cfdi_parser.metodo_pago
+  end
 end
