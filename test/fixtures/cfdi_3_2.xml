@@ -14,5 +14,8 @@
 </cfdi:Conceptos>
   <cfdi:Impuestos totalImpuestosRetenidos="1234.56" totalImpuestosTrasladados="789.01"><cfdi:Retenciones><cfdi:Retencion impuesto="ISR" importe="103.5"/><cfdi:Retencion impuesto="IVA" importe="164.04"/></cfdi:Retenciones><cfdi:Traslados><cfdi:Traslado impuesto="IVA" tasa="16.0" importe="845.61"/></cfdi:Traslados></cfdi:Impuestos>
   <cfdi:Complemento> 
+    <implocal:ImpuestosLocales xmlns:implocal="http://www.sat.gob.mx/implocal" version="1.0" TotaldeRetenciones="0.00" TotaldeTraslados="49.50">
+      <implocal:TrasladosLocales ImpLocTrasladado="I.S.H." TasadeTraslado="3" Importe="49.50" />
+    </implocal:ImpuestosLocales>
 	  <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="6C60D1A9-9EF0-4B67-A962-8A2CB902F977" FechaTimbrado="2012-10-24T16:24:40" selloCFD="WhU6wKjmAhfwehBHCbwVw2YANaFpjkJiV3rauEXllEMNpnaRnv4p8eBMAM1+3JxwVrFQK/+Gcy9FC3uTvOmF5HoMJGUui3ROW3wpleUCBbBdoJUVbWEVZs2UxgYewlpZ47A44O+Z9oHELFLmWdL0YEm8HF1WqoDBid8CF27tza8=" noCertificadoSAT="00001000000200365214" selloSAT="SiyadAfQXi3VVGemME99TcIaUbuQfNElzAPsyd/Jlu2MIzWfocVyTvIjUb5rGlexbca/tf2bfXRi/krFqGODX00GnG3TDoAXMoGKbtV6oUD7EbIvyr+D0tE4/MF1EMqcdldatClrod/4xx8g0Pa0R9t+PtVVy0eF7y3SJ78q9+Q=" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd"/></cfdi:Complemento>
 </cfdi:Comprobante>

@@ -78,4 +78,24 @@ class CfdiParserTest < MiniTest::Test
   def test_get_metodo_pago
     assert_equal "Transferencia Electrónica", @cfdi_parser.metodo_pago
   end
+
+  def test_get_impuesto_trasladado_iva
+    assert_equal "845.61", @cfdi_parser.impuesto_trasladado_iva
+  end
+
+  def test_get_impuesto_trasladado_local_ish
+    assert_equal "49.50", @cfdi_parser.impuesto_trasladado_local_ish
+  end
+
+  def test_get_impuesto_trasladado_ieps
+    assert_nil @cfdi_parser.impuesto_trasladado_ieps
+  end
+
+  def test_get_impuesto_retenido_isr
+    assert_equal "103.5", @cfdi_parser.impuesto_retenido_isr
+  end
+
+  def test_get_impuesto_retenido_iva
+    assert_equal "164.04", @cfdi_parser.impuesto_retenido_iva
+  end
 end

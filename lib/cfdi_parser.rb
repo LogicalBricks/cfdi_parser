@@ -55,7 +55,7 @@ module CfdiParser
     end
 
     def impuestos_retenidos
-      xpath('//cfdi:Retencion').map do |node|
+      @impuestos_retenidos ||= xpath('//cfdi:Retencion').map do |node|
         {
           impuesto: node.attributes.first.last.value,
           importe: node.attributes['importe'].value
@@ -64,7 +64,7 @@ module CfdiParser
     end
 
     def impuestos_trasladados
-      xpath('//cfdi:Traslado').map do |node|
+      @impuestos_trasladados ||= xpath('//cfdi:Traslado').map do |node|
         {
           impuesto: node.attributes['impuesto'].value,
           tasa: node.attributes['tasa'].value,
@@ -83,6 +83,41 @@ module CfdiParser
 
     def metodo_pago
       attribute("//cfdi:Comprobante", 'metodoDePago').value rescue nil
+    end
+
+    def impuesto_trasladado_iva
+      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IVA' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_trasladado_local_ish
+      impuesto = impuestos_locales_trasladados.find{ |h| h[:impuesto] == 'I.S.H.' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuestos_locales_trasladados
+      @impuestos_locales_trasladados ||= xpath('//implocal:TrasladosLocales').map do |node|
+        {
+          impuesto: node.attributes['ImpLocTrasladado'].value,
+          tasa: node.attributes['TasadeTraslado'].value,
+          importe: node.attributes['Importe'].value
+        }
+      end
+    end
+
+    def impuesto_trasladado_ieps
+      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IEPS' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_retenido_iva
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'IVA' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_retenido_isr
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'ISR' }
+      impuesto[:importe] if impuesto
     end
 
     private # ======================== PRIVATE ========================== #
