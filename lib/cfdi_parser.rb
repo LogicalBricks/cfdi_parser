@@ -15,7 +15,7 @@ module CfdiParser
     end
 
     def total
-      attribute("//cfdi:Comprobante", 'total').value rescue nil
+      attribute("//cfdi:Comprobante", 'total').value.to_f rescue nil
     end
 
     def serie
@@ -27,7 +27,7 @@ module CfdiParser
     end
 
     def subtotal
-      attribute("//cfdi:Comprobante", 'subTotal').value rescue nil
+      attribute("//cfdi:Comprobante", 'subTotal').value.to_f rescue nil
     end
 
     def nombre_emisor
@@ -47,18 +47,18 @@ module CfdiParser
     end
 
     def total_impuestos_retenidos
-      attribute("//cfdi:Impuestos", 'totalImpuestosRetenidos').value rescue nil
+      attribute("//cfdi:Impuestos", 'totalImpuestosRetenidos').value.to_f rescue nil
     end
 
     def total_impuestos_trasladados
-      attribute("//cfdi:Impuestos", 'totalImpuestosTrasladados').value rescue nil
+      attribute("//cfdi:Impuestos", 'totalImpuestosTrasladados').value.to_f rescue nil
     end
 
     def impuestos_retenidos
       @impuestos_retenidos ||= xpath('//cfdi:Retencion').map do |node|
         {
           impuesto: node.attributes.first.last.value,
-          importe: node.attributes['importe'].value
+          importe: node.attributes['importe'].value.to_f
         }
       end
     end
@@ -68,7 +68,7 @@ module CfdiParser
         {
           impuesto: node.attributes['impuesto'].value,
           tasa: node.attributes['tasa'].value,
-          importe: node.attributes['importe'].value
+          importe: node.attributes['importe'].value.to_f
         }
       end
     end
@@ -100,7 +100,7 @@ module CfdiParser
         {
           impuesto: node.attributes['ImpLocTrasladado'].value,
           tasa: node.attributes['TasadeTraslado'].value,
-          importe: node.attributes['Importe'].value
+          importe: node.attributes['Importe'].value.to_f
         }
       end
     end
