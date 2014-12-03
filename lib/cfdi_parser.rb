@@ -120,6 +120,10 @@ module CfdiParser
       impuesto[:importe] if impuesto
     end
 
+    def uuid
+      attribute("//tfd:TimbreFiscalDigital", 'UUID').value rescue nil
+    end
+
     private # ======================== PRIVATE ========================== #
 
     def attribute(path, attr)
