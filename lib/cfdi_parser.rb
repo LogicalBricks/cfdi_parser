@@ -96,7 +96,8 @@ module CfdiParser
     end
 
     def impuestos_locales_trasladados
-      @impuestos_locales_trasladados ||= xpath('//implocal:TrasladosLocales').map do |node|
+      impuestos = xpath('//implocal:TrasladosLocales') rescue []
+      @impuestos_locales_trasladados ||= impuestos.map do |node|
         {
           impuesto: node.attributes['ImpLocTrasladado'].value,
           tasa: node.attributes['TasadeTraslado'].value,
