@@ -60,7 +60,7 @@ module CfdiParser
           impuesto: node.attributes.first.last.value,
           importe: node.attributes['importe'].value.to_f
         }
-      end
+      end rescue []
     end
 
     def impuestos_trasladados
@@ -70,7 +70,7 @@ module CfdiParser
           tasa: node.attributes['tasa'].value,
           importe: node.attributes['importe'].value.to_f
         }
-      end
+      end rescue []
     end
 
     def fecha_timbrado
@@ -107,7 +107,7 @@ module CfdiParser
           tasa: node.attributes['TasadeTraslado'].value,
           importe: node.attributes['Importe'].value.to_f
         }
-      end
+      end rescue []
     end
 
     def impuesto_trasladado_ieps
