@@ -11,6 +11,11 @@ class CfdiParserTest < MiniTest::Test
     assert_equal "3.2", @cfdi_parser.version
   end
 
+  def test_get_tipo_de_comprobante
+    assert_equal "ingreso", @cfdi_parser.tipo_de_comprobante
+  end
+
+
   def test_get_serie
     assert_equal "A", @cfdi_parser.serie
   end

@@ -14,6 +14,10 @@ module CfdiParser
       attribute("//cfdi:Comprobante", 'version').value rescue nil
     end
 
+    def tipo_de_comprobante
+      attribute("//cfdi:Comprobante", 'tipoDeComprobante').value rescue nil
+    end
+
     def total
       attribute("//cfdi:Comprobante", 'total').value.to_f rescue nil
     end
