@@ -10,8 +10,16 @@ module CfdiParser
       @doc = Nokogiri::XML(cfdi)
     end
 
-    def version
-      attribute("//cfdi:Comprobante", 'version').value rescue nil
+    def is_version_3_2?
+      version('version') == '3.2'
+    end
+
+    def is_version_3_3?
+      version('Version') == '3.3'
+    end
+
+    def version(attr)
+      attribute("//cfdi:Comprobante", attr).value rescue nil
     end
 
     def fecha_timbrado
