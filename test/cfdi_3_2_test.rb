@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class CfdiParserTest < MiniTest::Test
+class Cfdi_3_2Test < MiniTest::Test
 
   def setup
     file = File.read(File.expand_path('../fixtures/cfdi_3_2.xml', __FILE__))
-    @cfdi_parser = CfdiParser::CfdiParser.new(file)
+    @cfdi_parser = CfdiParser::Cfdi_3_2.new(file)
   end
 
   def test_get_version
