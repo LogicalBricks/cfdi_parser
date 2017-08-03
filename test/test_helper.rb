@@ -1,3 +1,4 @@
+require 'cfdi_3_3'
 require 'cfdi_3_2'
 require 'cfdi_parser'
 require 'minitest/autorun'

@@ -3,6 +3,10 @@ require "cfdi_parser"
 module CfdiParser
   class Cfdi_3_2 < CfdiParser
 
+    def version
+      super('version')
+    end
+
     def tipo_de_comprobante
       attribute("//cfdi:Comprobante", 'tipoDeComprobante').value rescue nil
     end
@@ -66,12 +70,40 @@ module CfdiParser
       end rescue []
     end
 
+    def impuesto_trasladado_iva
+      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IVA' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_trasladado_ieps
+      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IEPS' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_trasladado_local_ish
+      impuesto = impuestos_locales_trasladados.find{ |h| h[:impuesto] == 'I.S.H.' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_retenido_isr
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'ISR' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_retenido_iva
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'IVA' }
+      impuesto[:importe] if impuesto
+    end
+
     def descripcion
       xpath('//cfdi:Concepto').map { |node| node[:descripcion] }.join(' ')
     end
 
     def metodo_pago
       attribute("//cfdi:Comprobante", 'metodoDePago').value rescue nil
+    end
+
+    def uso_cfdi
     end
 
   end

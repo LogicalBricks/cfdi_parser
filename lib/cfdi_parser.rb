@@ -4,10 +4,12 @@ require 'date'
 
 module CfdiParser
   class CfdiParser
-    attr_accessor :doc
+    attr_accessor :doc, :doc_without_node_conceptos
 
     def initialize(cfdi)
       @doc = Nokogiri::XML(cfdi)
+      @doc_without_node_conceptos = Nokogiri::XML(cfdi)
+      @doc_without_node_conceptos.search('//cfdi:Conceptos').remove
     end
 
     def is_version_3_2?
@@ -26,16 +28,6 @@ module CfdiParser
       Date.strptime(attribute("//tfd:TimbreFiscalDigital", 'FechaTimbrado').value, '%Y-%m-%d') rescue nil
     end
 
-    def impuesto_trasladado_iva
-      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IVA' }
-      impuesto[:importe] if impuesto
-    end
-
-    def impuesto_trasladado_local_ish
-      impuesto = impuestos_locales_trasladados.find{ |h| h[:impuesto] == 'I.S.H.' }
-      impuesto[:importe] if impuesto
-    end
-
     def impuestos_locales_trasladados
       begin
         impuestos = xpath('//implocal:TrasladosLocales')
@@ -51,19 +43,19 @@ module CfdiParser
       end rescue []
     end
 
-    def impuesto_trasladado_ieps
-      impuesto = impuestos_trasladados.find{ |h| h[:impuesto] == 'IEPS' }
-      impuesto[:importe] if impuesto
-    end
-
-    def impuesto_retenido_iva
-      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'IVA' }
-      impuesto[:importe] if impuesto
-    end
-
-    def impuesto_retenido_isr
-      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'ISR' }
-      impuesto[:importe] if impuesto
+    def impuestos_locales_retenidos
+      begin
+        impuestos = xpath('//implocal:RetencionesLocales')
+      rescue
+        impuestos = []
+      end
+      @impuestos_locales_retenidos ||= impuestos.map do |node|
+        {
+          impuesto: node.attributes['ImpLocRetenido'].value,
+          tasa: node.attributes['TasadeRetencion'].value,
+          importe: node.attributes['Importe'].value.to_f
+        }
+      end rescue []
     end
 
     def uuid
@@ -73,11 +65,19 @@ module CfdiParser
     private # ======================== PRIVATE ========================== #
 
     def attribute(path, attr)
-      xpath(path).attribute(attr)
+      select_element(xpath(path), attr).attribute(attr)
+    end
+
+    def select_element(nodeSet, attr)
+      nodeSet.select {|element| element.attribute(attr)}.first
     end
 
     def xpath(path)
       doc.xpath(path, namespaces)
+    end
+
+    def xpath_without_node_conceptos(path)
+      doc_without_node_conceptos.xpath(path, namespaces)
     end
 
     def namespaces
