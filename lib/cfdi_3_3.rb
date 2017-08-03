@@ -1,7 +1,5 @@
-require "cfdi_parser"
-
 module CfdiParser
-  class Cfdi_3_3 < CfdiParser
+  class Cfdi_3_3 < Parser
 
     def version
       super('Version')

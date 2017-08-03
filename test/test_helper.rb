@@ -1,6 +1,6 @@
-require 'cfdi_3_3'
+require 'parser'
 require 'cfdi_3_2'
-require 'cfdi_parser'
+require 'cfdi_3_3'
 require 'minitest/autorun'
 require 'minitest/unit'
 require 'minitest/pride'
