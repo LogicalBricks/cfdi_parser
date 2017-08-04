@@ -104,7 +104,19 @@ class Cfdi_3_2Test < MiniTest::Test
     assert_equal 164.04, @cfdi_parser.impuesto_retenido_iva
   end
 
+  def test_get_impuesto_retenido_ieps
+    assert_nil @cfdi_parser.impuesto_retenido_ieps
+  end
+
+  def test_get_impuesto_retenido_local_ins_y_vig
+    assert_nil @cfdi_parser.impuesto_retenido_local_ins_y_vig
+  end
+
   def test_get_uuid
     assert_equal '6C60D1A9-9EF0-4B67-A962-8A2CB902F977', @cfdi_parser.uuid
+  end
+
+  def test_get_uso_cfdi
+    assert_nil @cfdi_parser.uso_cfdi
   end
 end

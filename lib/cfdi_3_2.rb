@@ -93,6 +93,16 @@ module CfdiParser
       impuesto[:importe] if impuesto
     end
 
+    def impuesto_retenido_ieps
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'IEPS' }
+      impuesto[:importe] if impuesto
+    end
+
+    def impuesto_retenido_local_ins_y_vig
+      impuesto = impuestos_retenidos.find{ |h| h[:impuesto] == 'INS Y VIG' }
+      impuesto[:importe] if impuesto
+    end
+
     def descripcion
       xpath('//cfdi:Concepto').map { |node| node[:descripcion] }.join(' ')
     end
