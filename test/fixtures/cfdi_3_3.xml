@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:implocal="http://www.sat.gob.mx/implocal" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd" Version="3.3" Serie="SS" Folio="1" Fecha="2017-08-03T12:16:26" Sello="hQioCtWz42IWMmdqTGtUJgtk54pcfbVVaR1yj3LC6d8Vr55C7XsDlKwhaXKM7gTKICHiPkMx7TX2tyQkz4l762QLhaK4jQHoQPPBtMyOXSUI4zieFu+/9ZH0jcSTt+6NNVHNIPqEy1tjSWVX7KPDMznpoUr+Pus0ytnExEHsJ1I=" FormaPago="01" NoCertificado="20001000000200000192" Certificado="MIIERjCCAy6gAwIBAgIUMjAwMDEwMDAwMDAyMDAwMDAxOTIwDQYJKoZIhvcNAQEFBQAwggFcMRowGAYDVQQDDBFBLkMuIDIgZGUgcHJ1ZWJhczEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMTQwMgYJKoZIhvcNAQkCDCVSZXNwb25zYWJsZTogQXJhY2VsaSBHYW5kYXJhIEJhdXRpc3RhMB4XDTEyMTAyMjIwNDgwNloXDTE2MTAyMjIwNDgwNlowgcAxITAfBgNVBAMTGEVESVRPUklBTCBTSVNUQSBTQSBERSBDVjEhMB8GA1UEKRMYRURJVE9SSUFMIFNJU1RBIFNBIERFIENWMSEwHwYDVQQKExhFRElUT1JJQUwgU0lTVEEgU0EgREUgQ1YxJTAjBgNVBC0THEVTSTkyMDQyNzg4NiAvIEhFR1Q3NjEwMDM0UzIxHjAcBgNVBAUTFSAvIEhFR1Q3NjEwMDNNREZSTk4wOTEOMAwGA1UECxMFQW1pZ2EwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAK6YqAg3LHOPpAKD9OFkcNgB5wj+3k4oHPK3bFfku4TCEswtMhIt5LnZCt4UK0cp9SYpKMa2kZVYm6k6zphWg9bzv3pvHwt9mB6kFGyApU71cOk16unqL2o/pDj65zNtUBfDyKkKBUGQMYgtqvVq6aXJipqKOS/NsDKEUt0q1ghTAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBBQUAA4IBAQCgCCpYDbmN8npLX6vHCEJAF/1G3KhuAGY48wVt1va1YXRy6yj+tJZ9HZ3l8TY7J6n10XkrbzedOArKyjdpfqWbNabZHw6b2IlSN8HrHliiAEor5hwTUJnkg6S1nm0mmirInxCmWoVV+qrEX/XHylJ+OjIql/GyZrH9sEPCY+LYFfVhO0U73jKqajMEeZtWYq5wro4UhPUhlYgwhlzUN6XNWtiC8ohjE6QJaf8jYRsJjHraZL257O1o5T/3ULMJhASN7R211FmyAuiYsq8H3buPE0kl+EmN8DUNpTDkB9Xf1ba6gXZ0PRXF1oGUwxvX9FiI5eIau2RLfy9AfJPcpAXN" CondicionesDePago="Contado" SubTotal="2000.0" Descuento="100.0" Moneda="MXN" Total="1501.0" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="68000">
+  <cfdi:Emisor Rfc="ESI920427886" Nombre="MATERIALES MARROQUI SA DE CV" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="BAJS721028S88" Nombre="GARCIA DE ALBA ZEPEDA JORGE ARTURO" UsoCFDI="P01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="01010101" NoIdentificacion="01010101" Cantidad="1.0" ClaveUnidad="H87" Unidad="No aplica" Descripcion="PAgo" ValorUnitario="1000.0" Importe="1000.0">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1000.0" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00"/>
+        </cfdi:Traslados>
+        <cfdi:Retenciones>
+          <cfdi:Retencion Base="1000.0" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.050000" Importe="50.00"/>
+          <cfdi:Retencion Base="1000.0" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.050000" Importe="50.00"/>
+          <cfdi:Retencion Base="1000.0" Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.090000" Importe="90.00"/>
+        </cfdi:Retenciones>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="01010101" NoIdentificacion="01010101" Cantidad="1.0" ClaveUnidad="H87" Unidad="No aplica" Descripcion="Pago por servicios de desarrollo de software por cliente extanjero" ValorUnitario="1000.0" Importe="1000.0" Descuento="100.0">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="900.0" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00"/>
+        </cfdi:Traslados>
+        <cfdi:Retenciones>
+          <cfdi:Retencion Base="900.0" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.050000" Importe="45.00"/>
+          <cfdi:Retencion Base="900.0" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.050000" Importe="45.00"/>
+          <cfdi:Retencion Base="900.0" Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.090000" Importe="81.00"/>
+        </cfdi:Retenciones>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosRetenidos="361.0" TotalImpuestosTrasladados="0.0">
+    <cfdi:Retenciones>
+      <cfdi:Retencion Impuesto="001" Importe="95.00"/>
+      <cfdi:Retencion Impuesto="002" Importe="95.00"/>
+      <cfdi:Retencion Impuesto="003" Importe="171.00"/>
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <implocal:ImpuestosLocales version="1.0" TotaldeRetenciones="95.00" TotaldeTraslados="57.00">
+      <implocal:RetencionesLocales ImpLocRetenido="INS Y VIG" TasadeRetencion="5.0" Importe="95.0"/>
+      <implocal:TrasladosLocales ImpLocTrasladado="ISH" TasadeTraslado="3.0" Importe="57.0"/>
+    </implocal:ImpuestosLocales>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="7E1EB38E-786F-11E7-BA73-015CA153B379" FechaTimbrado="2017-08-03T12:16:31" RfcProvCertif="FMO1007168C6" SelloCFD="hQioCtWz42IWMmdqTGtUJgtk54pcfbVVaR1yj3LC6d8Vr55C7XsDlKwhaXKM7gTKICHiPkMx7TX2tyQkz4l762QLhaK4jQHoQPPBtMyOXSUI4zieFu+/9ZH0jcSTt+6NNVHNIPqEy1tjSWVX7KPDMznpoUr+Pus0ytnExEHsJ1I=" NoCertificadoSAT="20001000000300022323" SelloSAT="c6FrFqy0vYn7BZTYXyUnXP5PKEGagiRy7kjoSZ5+9Ox2z9Yj9Zd26psCRw2LvfkehV/+bZ5bjbXjIIj7Vs/aEZ7lNdCNASf92fblDtCOrTQkCm3+ljXvcKL335QxKRri3HAuNAxw17LOxKCZ9wLkKXfWYjJi7fkl90b2rdc15d5WPNGJqvZb7ox07umGEeIZxInmDLO7shCrRmfUuETu/dFjhyLd8VQclqTFxENNqhh60pzppbtvn/xX7FvpmJ0+HwAxnG+KpNdpRMbPeggw6AE7FbpPaYftxKgYdYX2PLIU4T4DcngyIMhpn3EHWWwdxn12lOMj5dsF0RKaAGks3A=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>
